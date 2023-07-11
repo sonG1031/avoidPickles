@@ -3,10 +3,10 @@ from enum import Enum
 
 class SpriteSheet:
 	def __init__(self, filename, bg=None):
-		self.spritesheet = pg.image.load(filename).convert()
+		self.spritesheet = pg.image.load(filename).convert_alpha()
 		self.bg = bg
 
-	def get_image(self, frame, scale=None, flip=False):
+	def get_image(self, frame, scale=None, flip=False): # frame = (x,y,width,height)
 		image = self.spritesheet.subsurface(pg.Rect(frame))
 		
 		if scale is not None:
@@ -40,12 +40,12 @@ class Animation:
 		self.mode = mode
 
 	def get_frame(self, state_time):
-		frame_number = self.get_frame_index(state_time);
-		return self.frames[frame_number];
+		frame_number = self.get_frame_index(state_time)
+		return self.frames[frame_number]
 
 	def get_frame_index(self, state_time):
 		if len(self.frames) == 1:
-			return 0;
+			return 0
 
 		frame_number = int(state_time/self.frame_duration)
 

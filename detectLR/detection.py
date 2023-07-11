@@ -43,6 +43,7 @@ class DetectionLR:
                     return  self.DIRECTION_MID
 
     def draw(self, img):
+
         # middle line
         cv2.line(img, (self.MIDDLE_POINT, 0), (self.MIDDLE_POINT, self.HEIGHT), (0, 255, 0), 1)
 
@@ -51,5 +52,12 @@ class DetectionLR:
 
         # right line
         cv2.line(img, (self.RIGHT_POINT, 0), (self.RIGHT_POINT, self.HEIGHT), (0, 0, 255), 1)
+
+
+        # border
+        cv2.line(img, (0, 0), (self.WIDTH, 0), (0, 255, 0), 5) # 위쪽 테두리
+        cv2.line(img, (0, 0), (0, self.HEIGHT), (0, 255, 0), 5) # 왼쪽 테두리
+        cv2.line(img, (0, self.HEIGHT), (self.WIDTH, self.HEIGHT), (0, 255, 0), 5) # 아래쪽 테두리
+        cv2.line(img, (self.WIDTH, 0), (self.WIDTH, self.HEIGHT), (0, 255, 0), 5) # 오른쪽 테두리
 
         return img
